@@ -62,18 +62,29 @@ export const saveOrder = (order: Order) => {
   });
   localStorage.setItem(KEYS.PRODUCTS, JSON.stringify(products));
 
-  // Add to Finance
+  // Add to Finance if completed or paid immediately (assuming POS is paid)
+  // Logic: If POS, it's paid. If delivery, might be pending.
+  // For simplicity, we add all sales as income, status based on order.
   const finance: FinanceEntry[] = getFinance();
   finance.push({
     id: Date.now().toString(),
     type: 'income',
-    description: `Venda #${order.id.slice(0,6)}`,
+    description: `Venda #${order.id.slice(0,6)} - ${order.customerName}`,
     amount: order.total,
     date: new Date().toISOString(),
     category: 'Vendas',
-    status: 'paid'
+    status: order.status === 'completed' ? 'paid' : 'pending'
   });
   localStorage.setItem(KEYS.FINANCE, JSON.stringify(finance));
+};
+
+export const updateOrder = (updatedOrder: Order) => {
+  const orders = getOrders();
+  const index = orders.findIndex(o => o.id === updatedOrder.id);
+  if (index >= 0) {
+    orders[index] = updatedOrder;
+    localStorage.setItem(KEYS.ORDERS, JSON.stringify(orders));
+  }
 };
 
 export const getFinance = (): FinanceEntry[] => {
@@ -84,6 +95,11 @@ export const getFinance = (): FinanceEntry[] => {
 export const saveFinanceEntry = (entry: FinanceEntry) => {
   const entries = getFinance();
   entries.push(entry);
+  localStorage.setItem(KEYS.FINANCE, JSON.stringify(entries));
+};
+
+export const deleteFinanceEntry = (id: string) => {
+  const entries = getFinance().filter(e => e.id !== id);
   localStorage.setItem(KEYS.FINANCE, JSON.stringify(entries));
 };
 

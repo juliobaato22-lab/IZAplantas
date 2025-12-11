@@ -8,6 +8,8 @@ import Cart from './pages/store/Cart';
 import Contact from './pages/store/Contact';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminProducts from './pages/admin/AdminProducts';
+import AdminSales from './pages/admin/AdminSales';
+import AdminFinance from './pages/admin/AdminFinance';
 import { initStorage } from './services/storageService';
 
 // Fallback for not implemented pages
@@ -35,8 +37,8 @@ function App() {
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminLayout><AdminDashboard /></AdminLayout>} />
         <Route path="/admin/products" element={<AdminLayout><AdminProducts /></AdminLayout>} />
-        <Route path="/admin/sales" element={<AdminLayout><Placeholder title="Vendas & PDV" /></AdminLayout>} />
-        <Route path="/admin/finance" element={<AdminLayout><Placeholder title="Financeiro" /></AdminLayout>} />
+        <Route path="/admin/sales" element={<AdminLayout><AdminSales /></AdminLayout>} />
+        <Route path="/admin/finance" element={<AdminLayout><AdminFinance /></AdminLayout>} />
         
         {/* Redirect */}
         <Route path="*" element={<Navigate to="/" replace />} />
