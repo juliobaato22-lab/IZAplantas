@@ -209,7 +209,7 @@ const AdminSales = () => {
                 <input 
                   type="text" 
                   placeholder="Buscar produto por nome ou código..." 
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-iza-green bg-gray-50"
+                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-black focus:outline-none focus:border-iza-green bg-white"
                   value={posSearch}
                   onChange={(e) => setPosSearch(e.target.value)}
                   autoFocus
@@ -274,11 +274,11 @@ const AdminSales = () => {
             <div className="p-4 bg-gray-50 border-t border-gray-200 space-y-3">
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase mb-1">Cliente</label>
-                <div className="flex items-center bg-white border border-gray-300 rounded px-2">
+                <div className="flex items-center bg-white border border-black rounded px-2">
                   <User className="w-4 h-4 text-gray-400 mr-2" />
                   <input 
                     type="text" 
-                    className="w-full py-2 text-sm outline-none"
+                    className="w-full py-2 text-sm outline-none bg-transparent"
                     value={customerName}
                     onChange={(e) => setCustomerName(e.target.value)}
                   />
@@ -288,7 +288,7 @@ const AdminSales = () => {
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase mb-1">Pagamento</label>
                 <select 
-                  className="w-full p-2 text-sm bg-white border border-gray-300 rounded outline-none"
+                  className="w-full p-2 text-sm bg-white border border-black rounded outline-none"
                   value={paymentMethod}
                   onChange={(e) => setPaymentMethod(e.target.value)}
                 >

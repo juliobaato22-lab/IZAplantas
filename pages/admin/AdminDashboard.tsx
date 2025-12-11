@@ -94,8 +94,8 @@ const AdminDashboard = () => {
       {/* Charts */}
       <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
         <h3 className="text-lg font-bold text-gray-800 mb-6">Vendas Recentes</h3>
-        <div className="h-80">
-          <ResponsiveContainer width="100%" height="100%">
+        <div className="h-80 w-full">
+          <ResponsiveContainer width="100%" height="100%" minWidth={0}>
             <BarChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
               <XAxis dataKey="name" stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
